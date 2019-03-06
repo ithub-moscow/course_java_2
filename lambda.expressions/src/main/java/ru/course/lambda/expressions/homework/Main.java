@@ -1,6 +1,7 @@
 package ru.course.lambda.expressions.homework;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,12 @@ public class Main {
         while (it.hasNext()) {
             System.out.print(it.next() + " ");
         }
+        System.out.println();
+        try {
+            it.next();
+        } catch (NoSuchElementException e) {
+            System.out.println("No elements");
+        }
 
         // Метод разворачивает список в обратном порядке
         list.reverse();
@@ -26,7 +33,7 @@ public class Main {
 
         // Этот цикл должен вывести элементы по порядку 4 3 2 1
         while (it.hasNext()) {
-            System.out.println(it.next());
+            System.out.print(it.next() + " ");
         }
     }
 }

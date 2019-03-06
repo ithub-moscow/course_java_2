@@ -2,8 +2,11 @@ package ru.course.stream.api;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static java.util.stream.Collectors.*;
 import static ru.course.stream.api.Person.person;
@@ -11,11 +14,12 @@ import static ru.course.stream.api.Person.person;
 public class Examples {
 
     public static void main(String[] args) {
-        filterByLength();
-        collectAsSet();
-        collectAsMap();
-        collectWithGrouping();
-        infiniteStream();
+//        filterByLength();
+//        collectAsSet();
+//        collectAsMap();
+//        collectWithGrouping();
+//        infiniteStream();
+        matrix();
     }
 
     static void filterByLength() {
@@ -26,7 +30,7 @@ public class Examples {
                     return str.length() % 2 == 0;
                 })
                 .map(str -> {
-                    System.out.println("map str");
+                    System.out.println("map " + str);
                     return str.length();
                 })
                 .forEach(System.out::println);
@@ -81,5 +85,15 @@ public class Examples {
                 .limit(10)
                 .sorted()
                 .forEach(System.out::println);
+    }
+
+    static void matrix() {
+        int[][] m = {{3,6,4}, {1,5,2}, {9,7,8}};
+
+        m = Stream.of(m).peek(Arrays::sort).toArray(n -> new int[3][3]);
+
+        for (int[] ints : m) {
+            System.out.println(Arrays.toString(ints));
+        }
     }
 }

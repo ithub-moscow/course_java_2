@@ -1,6 +1,7 @@
 package ru.course.lambda.expressions.homework;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedList<T> {
     private Item head;
@@ -30,7 +31,24 @@ public class LinkedList<T> {
             При реализации нужно воспользоваться вложенным или анонимным классом
      */
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+
+            private Item current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if(current == null)
+                    throw new NoSuchElementException();
+                T value = current.value;
+                current = current.next;
+                return value;
+            }
+        };
     }
 
     /*TODO Метод должен развернуть список в обратном порядке
