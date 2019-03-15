@@ -1,5 +1,7 @@
 package ru.course.stream.api.homework;
 
+//import jdk.jfr.Description;
+
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -18,8 +20,8 @@ public class Task3 {
                 .limit(N)
                 .reduce((r, i) -> r * i);
 
-        Stream.iterate(1, i-> i < N, i -> i + 1)
-                .reduce((r, i) -> r * i);
+//        Stream.iterate(1, i-> i <= N, i -> i + 1)
+//                .reduce((r, i) -> r * i);
 
 //        AtomicInteger index = new AtomicInteger(1);
 //        Stream.generate(index::incrementAndGet)
