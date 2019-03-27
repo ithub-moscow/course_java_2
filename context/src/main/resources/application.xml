@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="used" class="ru.ithub.context.Used" scope="prototype">
+        <property name="name" value="NAME"/>
+    </bean>
+
+    <bean id="using" class="ru.ithub.context.Using">
+        <property name="used" ref="used"/>
+    </bean>
+
+    <bean id="other" class="ru.ithub.context.Other">
+        <property name="used" ref="used"/>
+    </bean>
+</beans>
